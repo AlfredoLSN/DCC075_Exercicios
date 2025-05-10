@@ -13,8 +13,13 @@ const client = new OAuth2Client(
   process.env.GOOGLE_REDIRECT_URI
 );
 
+//Lista de usuarios comuns
 const commonGroup = ["alfredoliudigispark@gmail.com"];
+
+//Lista de usuarios administradores
 const adminGroup = ["alfredo.lucas@estudante.ufjf.br"];
+
+//!Se o usuario nao estiver nos dois grupo acima ele será considerado como convidado
 
 //Opcoes disponiveis para cada cargo
 //Opcoes do cargo convidado
@@ -53,18 +58,6 @@ const getOptionsForUser = (email) => {
   }
 };
 
-//Funcao para printar no terminal as opcoes disponiveis para o usuario com base no seu cargo
-const printOptions = (email) => {
-  if (options[user.role]) {
-    console.log("Opcoes disponiveis");
-    options[user.role].forEach((option, index) => {
-      console.log(`${index + 1} - ${option}`);
-    });
-  } else {
-    console.log("Role Invalida");
-  }
-};
-
 app.get("/", (req, res) => {
   const url = client.generateAuthUrl({
     access_type: "offline",
@@ -95,11 +88,15 @@ app.get("/callback", async (req, res) => {
 
 app.get("/welcome", (req, res) => {
   const { name, email } = req.query;
-  const options = getOptionsForUser(email);
+
+  const options = getOptionsForUser(email); // De acordo com o email do usuario será pego as opcoes disponiveis para ele confome o grupo de permissoes que ele pertence
+
   let optionsHTML = "";
+
   options.forEach((option) => {
     optionsHTML += `<li>${option}</li>`;
-  });
+  }); // Aqui sera pego a lista de opcoes do usuario e a transforme em uma lista HTML para ser exibido na tela.
+
   res.send(`
         <h1>Bem-vindo, ${name}!</h1>
         <p>Seu e-email: ${email}</p>
