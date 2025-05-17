@@ -77,8 +77,8 @@ class FeistelHelper:
                     bloco_direita = resultado_XOR
                 chave_atual = rotacionaBitsDireita(chave_atual)
             bloco_criptografado = bloco_esquerda + bloco_direita
-            print("MensagemFinal: ", bloco_criptografado)
-        mensagem_criptografada += bloco_criptografado
+            print("Bloco_criptografado: ", bloco_criptografado)
+            mensagem_criptografada += bloco_criptografado
         return b64encode(mensagem_criptografada).decode("utf-8")
 
                 
