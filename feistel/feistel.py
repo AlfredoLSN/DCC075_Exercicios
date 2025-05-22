@@ -3,6 +3,8 @@ from struct import pack
 from base64 import b64encode, b64decode
 
 
+# OBS: Foi utilizado IA para o entendimento do funcionamento de XOR e rotação de bits em python
+
 #Essa funcao recebe como parametro uma mensagem e o tamanho do bloco do algoritmo e rotarna uma lista com os blocos separados de acordo com o tamanho do bloco
 def divideEmBlocos(mensagem, tamanho_bloco):
         blocos = []
