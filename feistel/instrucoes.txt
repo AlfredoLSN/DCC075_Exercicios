@@ -1,0 +1,1 @@
+Abra o terminal na pasta onde esta o código  e execute o comando python feistel.py. O programa pedirá que você digite uma mensagem. Após a entrada, ele exibirá o texto original, o texto criptografado e o texto descriptografado.

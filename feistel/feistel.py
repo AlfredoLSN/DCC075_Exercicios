@@ -130,11 +130,11 @@ class FeistelHelper:
 
 
 feistel = FeistelHelper()
-texto = "Mensagem teste"
+texto = input("Digite sua mensagem: ")
 texto_criptografado = feistel.encrypt(texto)
 texto_decriptografado = feistel.decrypt(texto_criptografado)
 print("Texto original: ", texto)
-print("Texto criptografado: ", texto_criptografado)
+print("Texto criptografado em base64: ", texto_criptografado)
 print("Texto decriptografado: ", texto_decriptografado)
 
 
